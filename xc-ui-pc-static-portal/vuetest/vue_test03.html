@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_test测试数据</title>
+    <!--映入vue.js库-->
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<!--
+    构建DOM页面渲染
+    遍历数据使用v-for 判断v-if
+-->
+    <div id="app">
+        <a v-bind:href="url">{{name}}</a>
+        <ul>
+            <li v-for="(item,index) in list" :key="index" v-if="index %2 == 0">
+                {{index}} -- {{item}}
+            </li>
+
+            <li v-for="(item,index) in user" :key="index">
+                {{index}} -- {{item}}
+            </li>
+                <!--指定一个唯一的主键-->
+            <li v-for="(item,index) in userlist" :key="item.user.username">
+                <!--让username等于heima的变色-->
+                <div v-if="item.user.username == 'itcat'" style="color: #FF7F90">
+                    {{index}} -- {{item.user.username}}---{{item.user.age}}
+                </div>
+                <div v-else="">
+                    {{index}} -- {{item.user.username}}---{{item.user.age}}
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+<script>
+    var VM = new Vue({
+        el:"#app",
+        data:{
+            name:"北京黑马程序员",
+            url:'http://www.itcast.cn',
+            list:[1,2,3,4,5,6],
+            user:{username:"张三",age:10},
+            userlist:[
+                {user:{username:"itcat",age:10}},
+                {user:{username:"itheima",age:20}}
+            ]
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_test测试数据</title>
+    <!--映入vue.js库-->
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<!--
+    构建DOM页面渲染
+    使用model进行数据的双向绑定
+    字符串之前进行计算，数据类型转换
+
+    使用v-text解决闪烁问题
+-->
+    <div id="app">
+        {{name}}
+        <input type="text" v-model="num1" > +
+        <input type="text" v-model="num2" > =
+        <span v-text="result"></span>
+        <!--{{add}}-->
+        <!--{{Number.parseFloat(num1) + Number.parseFloat(num2)}}-->
+        <button @click="add">计算</button>
+    </div>
+
+<script>
+    var VM = new Vue({
+        el:"#app",
+        data:{
+            name:"江苏工程学院",
+            num1:"",
+            num2:"",
+            result:""
+        },
+        methods:{
+            add:function(){
+                this.result = Number.parseFloat(this.num1) + Number.parseFloat(this.num2) ;
+            }
+        },
+        computed:{
+
+        }
+    });
+</script>
+
+</body>
+</html>
